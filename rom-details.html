@@ -15,5 +15,44 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Retrieve ROM details based on the hash in the URL
+        const romDetails = {
+            'lineage': {
+                'name': 'Lineage OS',
+                'developer': 'Lineage Team',
+                'link': 'https://lineageos.org/',
+                'changelogs': '...'
+            },
+            'derpfest': {
+                'name': 'DerpFest',
+                'developer': 'DerpFest Team',
+                'link': 'https://derpfest.org/',
+                'changelogs': '...'
+            },
+            'pixelos': {
+                'name': 'PixelOS',
+                'developer': 'PixelOS Team',
+                'link': 'https://pixelos.org/',
+                'changelogs': '...'
+            }
+        };
+
+        const romName = window.location.hash.substring(1); // Remove the leading '#'
+        const romDetailsContainer = document.getElementById('rom-details');
+
+        if (romDetails[romName]) {
+            const { name, developer, link, changelogs } = romDetails[romName];
+            romDetailsContainer.innerHTML = `
+                <h1>${name}</h1>
+                <p><strong>Developer:</strong> ${developer}</p>
+                <p><strong>Link:</strong> <a href="${link}" target="_blank">${link}</a></p>
+                <p><strong>Changelogs:</strong></p>
+                <div id="changelogs-container">${marked(changelogs)}</div>
+            `;
+        } else {
+            romDetailsContainer.innerHTML = '<p>ROM details not found.</p>';
+        }
+    </script>
 </body>
 </html>
