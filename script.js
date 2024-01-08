@@ -1,36 +1,20 @@
-document.getElementById('lineage').addEventListener('click', function() {
-        loadRomDetails('lineage.json', 'lineage-changelogs.md');
-        });
+function loadRomDetails(jsonFile, changelogMarkdownFile) {
+    const jsonUrl = `https://raw.githubusercontent.com/ajaysinghsati/aj.github.io/main/${jsonFile}`;
+    const changelogUrl = `https://raw.githubusercontent.com/ajaysinghsati/aj.github.io/main/${changelogMarkdownFile}`;
 
-        document.getElementById('derpfest').addEventListener('click', function() {
-            loadRomDetails('derpfest.json', 'derpfest-changelogs.md');
-            });
-
-            document.getElementById('pixelos').addEventListener('click', function() {
-                loadRomDetails('pixelos.json', 'pixelos-changelogs.md');
-                });
-
-                function loadRomDetails(jsonFile, changelogMarkdownFile) {
-                    fetch(jsonFile)
-                            .then(response => response.json())
-                                    .then(data => {
-                                                return fetch(changelogMarkdownFile)
-                                                                .then(response => response.text())
-                                                                                .then(changelogs => {
-                                                                                                    return { data, changelogs };
-                                                                                                                    });
-                                                                                                                            })
-                                                                                                                                    .then(result => {
-                                                                                                                                                const romDetailsContainer = document.getElementById('rom-details');
-                                                                                                                                                            romDetailsContainer.innerHTML = `
-                                                                                                                                                                            <h1>${result.data.name}</h1>
-                                                                                                                                                                                            <p><strong>Developer:</strong> ${result.data.developer}</p>
-                                                                                                                                                                                                            <p><strong>Link:</strong> <a href="${result.data.link}" target="_blank">${result.data.link}</a></p>
-                                                                                                                                                                                                                            <p><strong>Changelogs:</strong></p>
-                                                                                                                                                                                                                                            <div id="changelogs-container">${marked(result.changelogs)}</div>
-                                                                                                                                                                                                                                                        `;
-                                                                                                                                                                                                                                                                })
-                                                                                                                                                                                                                                                                        .catch(error => console.error('Error loading ROM details:', error));
-                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                        
-})
+    Promise.all([
+        fetch(jsonUrl).then(response => response.json()),
+        fetch(changelogUrl).then(response => response.text())
+    ])
+    .then(([data, changelogs]) => {
+        const romDetailsContainer = document.getElementById('rom-details');
+        romDetailsContainer.innerHTML = `
+            <h1>${data.name}</h1>
+            <p><strong>Developer:</strong> ${data.developer}</p>
+            <p><strong>Link:</strong> <a href="${data.link}" target="_blank">${data.link}</a></p>
+            <p><strong>Changelogs:</strong></p>
+            <div id="changelogs-container">${marked(changelogs)}</div>
+        `;
+    })
+    .catch(error => console.error('Error loading ROM details:', error));
+}
