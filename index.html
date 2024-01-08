@@ -2,27 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>ROM Sharing</title>
-</head>
-<body>
-    <h1>ROMs</h1>
-    <div id="lineage">
-        <h2>Lineage OS</h2>
-        <!-- Add JavaScript to load and display JSON data here -->
-    </div>
-    <div id="derpfest">
-        <h2>DerpFest</h2>
-        <!-- Add JavaScript to load and display JSON data here -->
-    </div>
-    <div id="pixelos">
-        <h2>PixelOS</h2>
-        <!-- Add JavaScript to load and display JSON data here -->
-    </div>
-    <footer>
-        <a href="contributions.html">Contribute to Server</a>
-    </footer>
-    <script src="script.js"></script>
-</body>
-</html>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles.css">
+                <title>ROM Sharing</title>
+                </head>
+                <body>
+                    <h1>ROMs</h1>
+                        <div id="lineage">
+                                <h2>Lineage OS</h2>
+                                        <a href="rom-details.html" onclick="loadRomDetails('lineage.json', 'lineage-changelogs.md'); return false;">View Details</a>
+                                                <div class="screenshot-options">
+                                                            <a href="#">Share Screenshot 1</a>
+                                                                        <a href="#">Share Screenshot 2</a>
+                                                                                </div>
+                                                                                    </div>
+                                                                                        <div id="derpfest">
+                                                                                                <h2>DerpFest</h2>
+                                                                                                        <a href="rom-details.html" onclick="loadRomDetails('derpfest.json', 'derpfest-changelogs.md'); return false;">View Details</a>
+                                                                                                                <div class="screenshot-options">
+                                                                                                                            <a href="#">Share Screenshot 1</a>
+                                                                                                                                        <a href="#">Share Screenshot 2</a>
+                                                                                                                                                </div>
+                                                                                                                                                    </div>
+                                                                                                                                                        <div id="pixelos">
+                                                                                                                                                                <h2>PixelOS</h2>
+                                                                                                                                                                        <a href="rom-details.html" onclick="loadRomDetails('pixelos.json', 'pixelos-changelogs.md'); return false;">View Details</a>
+                                                                                                                                                                                <div class="screenshot-options">
+                                                                                                                                                                                            <a href="#">Share Screenshot 1</a>
+                                                                                                                                                                                                        <a href="#">Share Screenshot 2</a>
+                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                        <footer>
+                                                                                                                                                                                                                                <a href="contributions.html">Contribute to Server</a>
+                                                                                                                                                                                                                                    </footer>
+                                                                                                                                                                                                                                        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                                                                                                                                                                                                                                            <script src="script.js"></script>
+                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                            </html>
+                                                                                                                                                                                                                                            
