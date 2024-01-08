@@ -1,6 +1,6 @@
 function loadRomDetails(jsonFile, changelogMarkdownFile) {
     const jsonUrl = `https://raw.githubusercontent.com/ajaysinghsati/aj.github.io/main/${jsonFile}`;
-    const changelogUrl = `https://raw.githubusercontent.com/ajaysinghsati/aj.github.io/main/${changelogMarkdownFile}`;
+    const changelogUrl = `https://raw.githubusercontent.com/ajaysinghsati/github.io/main/${changelogMarkdownFile}`;
 
     Promise.all([
         fetch(jsonUrl).then(response => response.json()),
