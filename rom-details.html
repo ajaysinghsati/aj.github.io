@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js"></script>
     <script>
+    document.addEventListener('DOMContentLoaded', function () {
         // Retrieve ROM details based on the hash in the URL
         const romDetails = {
             'lineage': {
@@ -53,6 +54,7 @@
         } else {
             romDetailsContainer.innerHTML = '<p>ROM details not found.</p>';
         }
+    });
     </script>
 </body>
 </html>
